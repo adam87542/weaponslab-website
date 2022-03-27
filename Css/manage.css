@@ -1,0 +1,31 @@
+body {
+  background-image: url(../Imgs/backround4.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+h1,
+h2,
+th {
+  color: rgb(9, 253, 192);
+}
+form {
+  padding-right: 20%;
+}
+div,
+th {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  width: 50%;
+  border: 3px solid #1098ad;
+  padding: 30px;
+}

@@ -1,0 +1,66 @@
+* {
+  /* added this proptey so the margin we assigned to the elments wouldnt be calculated as a part of the width */
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding-left: 70px;
+  text-transform: uppercase;
+  text-align: left;
+  color: #1098ad;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+ul {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+aside {
+  border-top: 5px solid #0edcfc;
+  border-bottom: 5px solid #00dafc;
+  padding: 50px 0;
+  width: 600px;
+}
+
+/* Styling links */
+a:link {
+  margin: 0 20px;
+  margin-top: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: underline orangered;
+}

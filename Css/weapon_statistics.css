@@ -1,0 +1,28 @@
+.container {
+  width: 1140px;
+  margin-left: 20%;
+}
+img {
+  float: left;
+  width: 20%;
+}
+p {
+  padding-right: 8%;
+  font-size: 30px;
+  float: right;
+  width: 70%;
+}
+ul {
+  font-size: 30px;
+  float: left;
+  margin-right: 50%;
+  margin-left: 20%;
+  padding-bottom: 5%;
+}
+.wepaon {
+  width: 100%;
+}
+hr {
+  padding: 10px;
+  border-bottom: 5px solid rgb(167, 22, 22);
+}

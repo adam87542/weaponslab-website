@@ -1,0 +1,124 @@
+* {
+  /* added this proptey so the margin we assigned to the elments wouldnt be calculated as a part of the width */
+  box-sizing: border-box;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 70px;
+}
+table {
+  width: 100%;
+}
+td {
+  padding: 10px;
+  border-bottom: 5px solid rgb(167, 22, 22);
+}
+#special-weapon {
+  text-align: center;
+  font-size: 20px;
+}
+#special-weapon label {
+  padding: 0 10px;
+}
+#time-period {
+  text-align: center;
+}
+#time-period label {
+  padding: 0 10px;
+}
+
+.feedback {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-weight: bolder;
+  font-size: 15px;
+  margin: 0;
+  color: #f44336;
+}
+.header {
+  margin: 0 24%;
+  margin-bottom: 50px;
+  width: 50%;
+  border: 10px solid #6e5656;
+  color: rgb(238, 140, 12);
+  background-color: antiquewhite;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+b {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-size: 45px;
+}
+p {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 40px;
+}
+#mp5 {
+  float: right;
+}
+#stg-44 {
+  float: left;
+}
+.gun-images {
+  margin-top: 30px;
+  width: 20%;
+  height: 170px;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border: none; /* cancels the ugly border around the boxes */
+  background: #f1f1f1;
+}
+
+/*when the input fields get highlited */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+}
+
+hr {
+  border: 3px solid #6e5656;
+  margin-bottom: 25px;
+}
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 100px;
+  font-family: Arial;
+  background-color: rgb(208, 215, 221);
+}
+
+/* Set a style for all buttons */
+.cancelbtn,
+.signupbtn {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  cursor: pointer;
+  opacity: 0.8; /* this element represents how clear the image is */
+}
+
+.cancelbtn:hover {
+  opacity: 1;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+  background-color: #f44336;
+}
+.signupbtn {
+  background-color: #04aa6d;
+}
+
+.cancelbtn,
+.signupbtn {
+  padding: 14px 20px;
+  float: left; /* makes the two buttons align to the left of the containor */
+  width: 50%; /* the width of the buttons are 50% of there containor , which is the buttonboxes div. defualt :1767px*/
+}

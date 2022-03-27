@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="../Css//SignUpstyle.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+    <script language="javascript">
+function isBlanked(value) {
+  return value === "" ? true : false;
+}
+function isValid(check_username, email, confirm_pswd, pswd, radio_checked) {
+  return check_username === true &&
+    email === true &&
+    confirm_pswd === true &&
+    pswd === true &&
+    radio_checked === true
+    ? true
+    : false;
+}
+function isBetween(length, min, max) {
+  return length > min && length < max;
+}
+function correct_username(st) {
+  var count = 0;
+  for (var i = 0; i < st.length; i++) {
+    if (st.charAt(i) >= "a" && st.charAt(i) <= "z") count++;
+    if (st.charAt(i) >= "A" && st.charAt(i) <= "Z") count++;
+  }
+  return count == st.length;
+}
+function checkUsername(usernameEl) {
+  var valid = false;
+
+  const min = 5,
+    max = 25;
+
+  const username = usernameEl.value;
+
+  if (isBlanked(username)) {
+    document.getElementById("feedback-username").style.color = "red";
+    document.getElementById("feedback-username").textContent =
+      "Username cannot be blank!";
+  } else if (!isBetween(username.length, min, max)) {
+    document.getElementById("feedback-username").style.color = "red";
+    document.getElementById("feedback-username").textContent = "Username must be between " + min + " and " + max +  " characters!";
+  } else if (!correct_username(username)) {
+    document.getElementById("feedback-username").style.color = "red";
+    document.getElementById("feedback-username").textContent =
+      "Username must have only english characters!";
+  } else {
+    valid = true;
+    document.getElementById("feedback-username").style.color = "green";
+    document.getElementById("feedback-username").textContent = "Good!";
+  }
+
+  return valid;
+}
+function notTogether(st) {
+  var n1, n2;
+  n1 = st.indexOf("@");
+  n2 = st.indexOf(".");
+  if (Math.abs(n1 - n2) == 1) return false;
+  return true;
+}
+function count_special_characters(st) 
+{
+  var count_shtrudel = 0;
+  var count_dot = 0;
+
+  for (var i = 0; i < st.length; i++) 
+  {
+    if (st.charAt(i) == "@") {
+      count_shtrudel += 1;
+    } else if (st.charAt(i) == ".") {
+      count_dot += 1;
+    }
+    if (count_dot > 1 || count_shtrudel > 1) return false;
+  }
+  return true;
+}
+function correctEmail(st) {
+  var count = 0;
+  for (var i = 0; i < st.length; i++) {
+    if (st.charAt(i) >= "a" && st.charAt(i) <= "z") count++;
+    if (st.charAt(i) >= "0" && st.charAt(i) <= "9") count++;
+    if (st.charAt(i) >= "A" && st.charAt(i) <= "Z") count++;
+    if (
+      st.charAt(i) == "." ||
+      st.charAt(i) == "_" ||
+      st.charAt(i) == "@" ||
+      st.charAt(i) == "-"
+    )
+      count++;
+  }
+  if (count == st.length) return true;
+  return false;
+}
+
+function notBeginEnd(st) {
+  if (st.indexOf("@") == 0 || st.indexOf("@") == st.length - 1) return false;
+  if (st.indexOf(".") == 0 || st.lastIndexOf(".") == st.length - 1)
+    return false;
+  return true;
+}
+function check_special(st) {
+  return st.indexOf("@") != -1 && st.indexOf(".") != -1;
+}
+
+function checkEmail(emailEl) {
+  var valid = false;
+  const email = emailEl.value;
+  if (isBlanked(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "Email cannot be blank!";
+  } else if (!count_special_characters(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "email cant have more then one @ or .";
+  } else if (!check_special(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "email need to have one @ and .";
+  } else if (!notBeginEnd(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "Email cannot end or strat with a . or a @";
+  } else if (!correctEmail(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "Email contains restricted characters!";
+  } else if (!notTogether(email)) {
+    document.getElementById("feedback-email").style.color = "red";
+    document.getElementById("feedback-email").textContent =
+      "email cant have @ and . together!";
+  } else {
+    valid = true;
+    document.getElementById("feedback-email").textContent = "Good!";
+    document.getElementById("feedback-email").style.color = "green";
+  }
+
+  return valid;
+}
+function contains_a_number(password) {
+  const regex = /\d/;
+
+  // Check if string contians numbers
+  const doesItHaveNumber = regex.test(password);
+  return doesItHaveNumber;
+}
+function contains_special_character(password) {
+  var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  return format.test(password);
+}
+function checkPassword(passwordEl) {
+  var valid = false;
+  const password = passwordEl.value;
+  if (isBlanked(password)) {
+    document.getElementById("feedback-password").style.color = "red";
+    document.getElementById("feedback-password").textContent =
+      "Password cannot be blank!";
+  } else if (password.length < 8) {
+    document.getElementById("feedback-password").style.color = "red";
+    document.getElementById("feedback-password").textContent =
+      "Password length needs to be at least 8 chracters!";
+  } else if (!contains_a_number(password)) {
+    document.getElementById("feedback-password").style.color = "red";
+    document.getElementById("feedback-password").textContent =
+      "password needs to have at least one number!";
+  } else if (!contains_special_character(password)) {
+    document.getElementById("feedback-password").style.color = "red";
+    document.getElementById("feedback-password").textContent =
+      "password needs to have at least one special character!";
+  } else {
+    valid = true;
+    document.getElementById("feedback-password").style.color = "green";
+    document.getElementById("feedback-password").textContent = "Good!";
+  }
+  return valid;
+}
+
+function checkConfirmPassword(passwordEl, confirmPasswordEl) {
+  var valid = false;
+
+  // check confirm password
+  const confirmPassword = confirmPasswordEl.value;
+  const password = passwordEl.value;
+
+  if (isBlanked(confirmPassword)) {
+    document.getElementById("feedback-confirm-password").style.color = "red";
+    document.getElementById("feedback-confirm-password").textContent =
+      "Please enter the password again!";
+  } else if (password !== confirmPassword) {
+    document.getElementById("feedback-confirm-password").style.color = "red";
+    document.getElementById("feedback-confirm-password").textContent =
+      "The password does not match!";
+  } else {
+    valid = true;
+    document.getElementById("feedback-confirm-password").style.color = "green";
+    document.getElementById("feedback-confirm-password").textContent = "Good!";
+  }
+
+  return valid;
+}
+function checkButtons(input_type, lable_name, feedback_message) {
+  var buttons = document.querySelectorAll(input_type);
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].checked) 
+    {
+      document.getElementById(lable_name).textContent = "Good!";
+      document.getElementById(lable_name).style.color = "green";
+      return true;
+    };
+  }
+  document.getElementById(lable_name).style.color = "red";
+  document.getElementById(lable_name).textContent = feedback_message;
+  return false;
+}
+//this is the main function
+function mainFunc()
+{
+  const usernameEl = document.getElementById("username");
+  const emailEl = document.getElementById("email");
+  const passwordEl = document.getElementById("password");
+  const confirmPasswordEl = document.getElementById("confirm-password");
+  var check_username = checkUsername(usernameEl);
+  var email = checkEmail(emailEl);
+  var pswd = checkPassword(passwordEl);
+  var confirm_pswd = checkConfirmPassword(passwordEl, confirmPasswordEl);
+  var radio_checked = checkButtons(
+    "input[type=radio]",
+    "feedback-time-period",
+    "you need to choose an option!"
+  );
+
+  if (!isValid(check_username, email, pswd, confirm_pswd, radio_checked)) 
+	  {
+	  System.out.print("there is a problem");
+      return false;
+	  }
+  System.out.print("success");
+  return true;
+  
+};
+function disableRadioButtons(input_type, label_name) {
+  var buttons = document.querySelectorAll(input_type);
+  for (var i = 0; i < buttons.length; i++) buttons[i].checked = false;
+  document.getElementById(label_name).textContent = null;
+}
+
+function clearPage()
+{
+  document.getElementById("feedback-username").textContent = null;
+  document.getElementById("feedback-email").textContent = null;
+  document.getElementById("feedback-password").textContent = null;
+  document.getElementById("feedback-confirm-password").textContent = null;
+  document.getElementById("username").textContent = null;
+  document.getElementById("email").textContent = null;
+  document.getElementById("password").textContent = null;
+  document.getElementById("confirm-password").textContent = null;
+  disableRadioButtons("input[type=radio]", "feedback-time-period");
+}
+</script>
+
+<title>Sign up page</title>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="gun-images"
+        id="stg-44"
+        src="../Imgs//Sturmgewehr_44.jpg"
+        alt="stg 44 image"
+      />
+      <img
+        class="gun-images"
+        id="mp5"
+        src="../Imgs//csm_MP5A3_re_6691b1ed48.png"
+        alt="mp5 image"
+      />
+
+      <div class="header">
+        <h1>Welcome to weapons lab Sign Up page</h1>
+        <p>Please fill this fields to create an account</p>
+      </div>
+
+      <hr />
+      <form action="index.html" name="myForm" onsubmit="return mainFunc();" method="post">
+        <table>
+          <tr>
+            <td>
+              <label name="username-label" for="username"
+                ><b>Enter yout username</b></label
+              >
+              <input
+                name="username"
+                type="text"
+                placeholder="Enter username"
+                id="username"
+              />
+              <p class="feedback" id="feedback-username"></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label name="Email-label" class="input-text" for="email"
+                ><b>Email</b></label
+              >
+              <input
+                name="email"
+                type="text"
+                placeholder="Enter Email"
+                id="email"
+              />
+              <p class="feedback" id="feedback-email"></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label name="password-label" class="input-text" for="psw"
+                ><b>Password</b></label
+              >
+              <input
+                name="password"
+                type="password"
+                placeholder="Enter Password"
+                id="password"
+              />
+              <p class="feedback" id="feedback-password"></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label
+                class="input-text"
+                for="psw-repeat"
+                ><b>Repeat Password</b></label
+              >
+              <input
+                name="confirm_password"
+                type="password"
+                placeholder="Repeat your password"
+                id="confirm-password"
+              />
+              <p class="feedback" id="feedback-confirm-password"></p>
+            </td>
+          </tr>
+          <tr>
+            <td id="time-period">
+              <p>Choose your preffered time period</p>
+              <div>
+                <input name="time_period"  type="radio" id="Yes"/>
+                <label>American Civil War</label>
+
+                <input name="time_period" type="radio" id="No" />
+                <label>World War I</label>
+                <input name="time_period" type="radio" id="No" />
+                <label>World War II</label>
+                <input name="time_period"  type="radio" id="Yes"/>
+                <label>Korean War</label>
+
+                <p class="feedback" id="feedback-time-period"></p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td id="special-weapon">
+              <p>Select yout favorite special weapon</p>
+              <div>
+                <select name="special_weapon">
+                  <option value="grenade_launchers">grenade launchers</option>
+                  <option value="rocket_launchers">rocket launchers</option>
+                  <option value="machine_guns">machine guns</option>
+                  <option value="revolvers">revolvers</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="SignUp-Cancel">
+                <input type="button" name="cancelbutton" class="cancelbtn" value="Cancel" onclick="clearPage();">
+                </input>
+                <input type="submit" name="Confirmlbutton" class="signupbtn" value="Sign Up">
+                </input>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>

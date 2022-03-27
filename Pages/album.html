@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="../Css/Album.css" rel="stylesheet" />
+    <title>pictures</title>
+    <style>
+      
+      body{
+        background-image: url(.//Imgs/backround4.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+    <script lang="javascript">
+      let counter = 0
+      num_of_photos = 7
+      function getpicture(option)
+      {
+        if(option == 1)
+        counter++;
+        else
+        counter--
+        if(counter > 0 && counter < num_of_photos)
+         {
+             weapon_pics.src = "../Imgs/" + counter +  ".jpg";
+         }
+         else
+         {
+           if(option == 1)
+           counter = num_of_photos - 1;
+           else
+           counter = 1
+         }
+       }
+    </script>
+  </head>
+  <body>
+    <iframe
+    src="menu.html"
+    width="100%"
+    height="150px"
+    scrolling="no"
+    frameborder="0"
+  ></iframe>
+  <div class="container">
+      <h2>Welcome to weapons lab gallery</h2>
+      <h3>click on the buttons to see the previous/next picture</h3>
+      <div class="button-container">
+        <input type="button" value="prev" onclick="getpicture(0)" />
+        <input type="button" value="next" onclick="getpicture(1)" />
+      </div>
+      <img
+        style="
+          margin-top: 50px;
+          margin-left: 25%;
+          margin-right: 25%;
+          width: 50%;
+        "
+        src="../Imgs/1.jpg"
+        name="weapon_pics"
+      />
+    </div>
+  </div>
+  </body>
+</html>

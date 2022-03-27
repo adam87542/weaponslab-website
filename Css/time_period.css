@@ -1,0 +1,37 @@
+img {
+  float: left;
+  width: 20%;
+}
+.container {
+  width: 1140px;
+  margin-left: 20%;
+}
+h1 {
+  font-size: 50px;
+}
+p {
+  margin-left: 20%;
+  margin-top: 5%;
+  color: white;
+}
+h3,
+h1 {
+  margin-top: 10%;
+  margin-left: 20%;
+}
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
